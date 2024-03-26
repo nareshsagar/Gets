@@ -49,6 +49,10 @@ if __name__ == '__main__':
             text-overflow: ellipsis; /* Display ellipsis for overflow text */
             white-space: nowrap; /* Prevent line breaks */
         }
+        .value-cell {
+            max-height: 100px; /* Set maximum height for value cell */
+            overflow: auto; /* Enable vertical scrollbar if content exceeds height */
+        }
         a {
             text-decoration: none; /* Remove underline from links */
         }
@@ -64,7 +68,7 @@ if __name__ == '__main__':
             {% for key, value in result.items() %}
             <tr>
                 <td>{{ key }}</td>
-                <td>
+                <td class="value-cell">
                     {% if key == 'URL' %}
                         <a href="{{ value }}">Visit website</a>
                     {% else %}
@@ -77,5 +81,3 @@ if __name__ == '__main__':
     </div>
 </body>
 </html>
-
-
