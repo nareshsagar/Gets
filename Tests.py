@@ -31,13 +31,51 @@ if __name__ == '__main__':
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
+    <style>
+        .container {
+            max-width: 800px; /* Set maximum width for the container */
+            margin: 0 auto; /* Center the container horizontally */
+        }
+        table {
+            width: 100%; /* Ensure table fills container width */
+            border-collapse: collapse; /* Collapse table borders */
+        }
+        th, td {
+            padding: 8px; /* Add padding for table cells */
+            border: 1px solid #ddd; /* Add border for table cells */
+            text-align: left; /* Align text to the left */
+            max-width: 200px; /* Limit maximum width of table cells */
+            overflow: hidden; /* Hide overflowing content */
+            text-overflow: ellipsis; /* Display ellipsis for overflow text */
+            white-space: nowrap; /* Prevent line breaks */
+        }
+        a {
+            text-decoration: none; /* Remove underline from links */
+        }
+    </style>
 </head>
 <body>
-    <h2>Outcome</h2>
-    <p>{{ outcome }}</p>
+    <div class="container mx-auto p-8">
+        <table>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+            {% for key, value in result.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>
+                    {% if key == 'URL' %}
+                        <a href="{{ value }}">Visit website</a>
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
-
-
 
 
